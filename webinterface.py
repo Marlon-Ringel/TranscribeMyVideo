@@ -15,32 +15,40 @@ class Webinterface:
         self.webinterface.add_url_rule("/upload", "upload", self.upload, methods=["GET", "POST"])
         self.webinterface.add_url_rule("/transcription_process", "transcriptionProcess", self.startTranscriptionProcess, methods=["GET"] )
         self.webinterface.add_url_rule("/correct_transcript", "correctionPage", self.correctionPage, methods=["GET"])
+        self.webinterface.add_url_rule("/corrected_transcript", "correctedTranscript", self.getCorrectedTranscript, methods=["GET", "POST"])
         self.webinterface.add_url_rule("/download", "download", self.downloadPage, methods=["GET"])
+        self.webinterface.add_url_rule("/download_pdf", "downloadPDF", self.downloadPdf, methods=["GET"])
 
     def run(self, **kwargs):
         self.webinterface.run(**kwargs)
 
     def uploadStartpage(self):
-        return render_template("") 
+        return render_template("upload_startpage.html")
 
     def uploadNoFileSelected(self):
-        return render_template("")
+        return render_template("upload_noFileSelected.html")
 
     def uploadInvalidFileFormat(self):
-        return render_template("")
+        return render_template("upload_invalidFileFormat.html")
     
     def upload(self):
         return redirect(url_for("transcriptionProcess"))
     
     def startTranscriptionProcess(self):
         th.Thread(target=self.transcriptionProcess, daemon=True).start()
-        return render_template("")
+        return render_template("transcriptionProgressPage.html")
     
     def transcriptionProcess(self):
         pass
 
     def correctionPage(self):
-        return render_template("")
+        return render_template("correctionPage.html")
     
+    def getCorrectedTranscript(self):
+        return redirect(url_for("download"))
+
     def downloadPage(self):
-        return render_template("")
+        return render_template("downloadPage.html")
+    
+    def downloadPdf(self):
+        print("Download") #placeholder

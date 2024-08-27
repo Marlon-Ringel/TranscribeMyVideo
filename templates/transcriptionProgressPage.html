@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block titletext %}
+    <h2>Transkript für „{{ videoFileName }}“ wird erstellt.</h2> 
+{% endblock %}
+ 
+{% block interactive %}  
+    <div>
+        <div></div>
+        <p>Bitte warten ...</p>
+    </div>   
+{% endblock %}
+
+{% block explenation %} 
+    <div>
+        <p>
+            Ihr Transkript des Videos „{{ videoFileName }}“ wird erstellt. <br>
+            Bitte warten Sie, bis der Prozess abgeschlossen ist. <br> 
+            Sie werden auf die Seite zum bearbeiten des Transkriptes weitergeleitet, <br>
+            sobald dieses fertiggestellt ist. 
+        </p>
+    </div>   
+{% endblock %}

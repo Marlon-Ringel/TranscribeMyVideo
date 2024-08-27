@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block titletext %}
+    <h2>Transkript herunterladen.</h2> 
+{% endblock %}
+ 
+{% block interactive %}  
+    <div>
+        <p>Transkript wurde erfolgreich erstellt.</p>
+        <div> 
+            <a href="{{url_for('downloadPDF')}}">Transkript als PDF herunterladen</a>
+        </div>
+        <div>
+            <a href="/">Zurück zur Startseite</a>
+        </div>   
+    </div>
+{% endblock %}
+
+{% block explenation %} 
+    <div>
+        <p>
+            Ihr Transkript des Videos „{{ videoFileName }}“ steht zum Herunterladen bereit. <br> 
+            Klicken Sie auf den Button „Transkript als PDF herunterladen“, um das Transkript herunterzuladen. <br><br>
+            Durch Klicken des Buttons „Zurück zur Startseite“ gelangen Sie wieder zur Startseite
+            und können weitere Transkripte anfertigen. <br><br>
+            <span>Achtung: </span>Beim Verlassen dieser Seite wird das erstellte Transkript gelöscht. 
+        </p> 
+    </div>
+{% endblock %}
