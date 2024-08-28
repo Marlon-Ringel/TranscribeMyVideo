@@ -2,7 +2,9 @@ import json
 import threading as th
 from flask import *
 
-import time
+from dataManager import DataManager
+
+import time #Remove when not longer needed 
 
 class Webinterface:
     def __init__(self, serverName):
@@ -11,6 +13,7 @@ class Webinterface:
         self.webinterface = Flask(__name__)
         self.webinterface.config["SERVER_NAME"] = self.serverName
         self.addEndpoints()
+        DataManager.initailizeFilesystem()
 
     def addEndpoints(self):
         self.webinterface.add_url_rule("/", "upload_startPage", self.uploadStartpage, methods=["GET"])
@@ -28,6 +31,7 @@ class Webinterface:
         self.webinterface.run(**kwargs)
 
     def uploadStartpage(self):
+        DataManager.resetFileSystem()
         return render_template("upload_startpage.html")
 
     def uploadNoFileSelected(self):
