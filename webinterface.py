@@ -1,9 +1,13 @@
+import json
 import threading as th
 from flask import *
+
+import time
 
 class Webinterface:
     def __init__(self, serverName):
         self.serverName = serverName
+        self.transcriptionStatus = ""
         self.webinterface = Flask(__name__)
         self.webinterface.config["SERVER_NAME"] = self.serverName
         self.addEndpoints()
@@ -14,6 +18,7 @@ class Webinterface:
         self.webinterface.add_url_rule("/upload_invalid_file_format", "upload_invalidFileFormatSelected", self.uploadInvalidFileFormat, methods=["GET"])
         self.webinterface.add_url_rule("/upload", "upload", self.upload, methods=["GET", "POST"])
         self.webinterface.add_url_rule("/transcription_process", "transcriptionProcess", self.startTranscriptionProcess, methods=["GET"] )
+        self.webinterface.add_url_rule("/transcription_status", "transcription_status", self.getTranscriptionStatus, methods=["GET"])
         self.webinterface.add_url_rule("/correct_transcript", "correctionPage", self.correctionPage, methods=["GET"])
         self.webinterface.add_url_rule("/corrected_transcript", "correctedTranscript", self.getCorrectedTranscript, methods=["GET", "POST"])
         self.webinterface.add_url_rule("/download", "download", self.downloadPage, methods=["GET"])
@@ -35,11 +40,18 @@ class Webinterface:
         return redirect(url_for("transcriptionProcess"))
     
     def startTranscriptionProcess(self):
+        self.transcriptionStatus = "inProgress"
         th.Thread(target=self.transcriptionProcess, daemon=True).start()
         return render_template("transcriptionProgressPage.html")
     
     def transcriptionProcess(self):
-        pass
+        time.sleep(5) #Placeholder
+        self.transcriptionStatus = "done"
+
+    def getTranscriptionStatus(self):
+        transcriptionStatus = {"transcriptionStatus":self.transcriptionStatus, 
+                               "serverName":self.serverName}
+        return json.dumps(transcriptionStatus)
 
     def correctionPage(self):
         return render_template("correctionPage.html")
