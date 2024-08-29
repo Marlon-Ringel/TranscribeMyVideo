@@ -4,8 +4,7 @@ from flask import *
 
 from dataManager import DataManager
 from uploadService import UploadService
-
-import time #Remove when not longer needed 
+from transcriptionService import TranscriptionService
 
 class Webinterface:
     def __init__(self, serverName):
@@ -55,10 +54,11 @@ class Webinterface:
     def startTranscriptionProcess(self):
         self.transcriptionStatus = "inProgress"
         th.Thread(target=self.transcriptionProcess, daemon=True).start()
-        return render_template("transcriptionProgressPage.html")
+        return render_template("transcriptionProgressPage.html", videoFileName=DataManager.getVideoFileName())
     
     def transcriptionProcess(self):
-        time.sleep(5) #Placeholder
+        transcriptionService = TranscriptionService()
+        transcriptionService.generateTranscription()
         self.transcriptionStatus = "done"
 
     def getTranscriptionStatus(self):
@@ -77,4 +77,3 @@ class Webinterface:
     
     def downloadPdf(self):
         print("Download") #placeholder
-        
