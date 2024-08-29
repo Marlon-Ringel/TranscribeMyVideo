@@ -3,6 +3,7 @@ import threading as th
 from flask import *
 
 from dataManager import DataManager
+from uploadService import UploadService
 
 import time #Remove when not longer needed 
 
@@ -41,6 +42,14 @@ class Webinterface:
         return render_template("upload_invalidFileFormat.html")
     
     def upload(self):
+        uploadService = UploadService(request)
+
+        if uploadService.fileNotUploaded():
+            return redirect(url_for('upload_noFileSelected'))
+        
+        if not uploadService.validateFileFormat():
+            return redirect(url_for('upload_invalidFileFormatSelected')) 
+        
         return redirect(url_for("transcriptionProcess"))
     
     def startTranscriptionProcess(self):
@@ -68,3 +77,4 @@ class Webinterface:
     
     def downloadPdf(self):
         print("Download") #placeholder
+        

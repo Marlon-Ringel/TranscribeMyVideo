@@ -24,3 +24,18 @@ class DataManager:
         os.mkdir(f"{DataManager.filesystemPath}PDF")
         os.mkdir(f"{DataManager.filesystemPath}text")
         os.mkdir(f"{DataManager.filesystemPath}video")
+    
+    @staticmethod
+    def saveUploadedFile(file):
+        DataManager.videoFileName = file.filename 
+        file.save(DataManager.getVideoFilePath())
+
+    @staticmethod
+    def removeUploadedFile():
+        os.remove(DataManager.getVideoFilePath())
+        DataManager.videoFileName = ""
+
+    @staticmethod
+    def getVideoFilePath():
+        return f"{DataManager.filesystemPath}video/{DataManager.videoFileName}"
+    
