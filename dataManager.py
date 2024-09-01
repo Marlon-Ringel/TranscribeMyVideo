@@ -1,6 +1,7 @@
 import os
 import shutil
 import pathlib
+from fpdf import FPDF
 from moviepy.editor import *
 
 class DataManager:
@@ -46,6 +47,32 @@ class DataManager:
             transcriptFile.write(f"{rowCount}\n")
             transcriptFile.write(transcript)
 
+    @staticmethod 
+    def loadTranscript():
+        rowCount = 1
+        transcript = ""
+        with open(f"{DataManager.filesystemPath}text/transcript.txt") as transcriptFile:
+            rowCount = int(transcriptFile.readline())
+            transcript = transcriptFile.read()
+        return rowCount, transcript
+
+    @staticmethod 
+    def saveTranscriptAsPDF(transcript):
+        pdf = FPDF()
+        pdf.add_page()
+        pdf.set_font(family = "Arial", style = "B", size = 16)
+
+        if len(DataManager.videoFileName) > 35:
+            pdfTitle = f"Transkript des Videos {DataManager.videoFileName[0:35]}...\n"
+        else:    
+            pdfTitle = f"Transkript des Videos {DataManager.videoFileName}\n"
+
+        pdf.cell(w = 0, txt=pdfTitle, ln=1, align="C")
+        pdf.cell(w=0, h=10, txt="", ln=1)
+        pdf.set_font(family="", style="", size = 12)
+        pdf.multi_cell(w = 0, h = 5, txt = transcript)
+        pdf.output(DataManager.getPdfFilePath())
+
     @staticmethod
     def getVideoFilePath():
         return f"{DataManager.filesystemPath}video/{DataManager.videoFileName}"
@@ -58,3 +85,8 @@ class DataManager:
     def getAudioFilePath():
         return f"{DataManager.filesystemPath}audio/audio.mp3"
     
+    @staticmethod
+    def getPdfFilePath():
+        if len(DataManager.videoFileName.replace('.mp4', '')) > 38:
+            return f"{DataManager.filesystemPath}PDF/{DataManager.videoFileName.replace('.mp4', '')[0:38]}_transcription.pdf"
+        return f"{DataManager.filesystemPath}PDF/{DataManager.videoFileName.replace('.mp4', '')}_transcription.pdf"    

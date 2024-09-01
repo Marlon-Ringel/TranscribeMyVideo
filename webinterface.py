@@ -67,9 +67,13 @@ class Webinterface:
         return json.dumps(transcriptionStatus)
 
     def correctionPage(self):
-        return render_template("correctionPage.html")
+        rowCount, transcript = DataManager.loadTranscript()
+        return render_template("correctionPage.html", rows=rowCount, transcriptText=transcript, videoFileName=DataManager.getVideoFileName())
     
     def getCorrectedTranscript(self):
+        if request.method == "POST":
+            correctedTranscript = request.form.get("transcript")
+            DataManager.saveTranscriptAsPDF(correctedTranscript)
         return redirect(url_for("download"))
 
     def downloadPage(self):
