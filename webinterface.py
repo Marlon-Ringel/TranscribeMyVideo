@@ -77,7 +77,7 @@ class Webinterface:
         return redirect(url_for("download"))
 
     def downloadPage(self):
-        return render_template("downloadPage.html")
+        return render_template("downloadPage.html", videoFileName=DataManager.getVideoFileName())
     
     def downloadPdf(self):
-        print("Download") #placeholder
+        return send_file(DataManager.getPdfFilePath(), as_attachment=True)
