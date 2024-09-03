@@ -7,12 +7,11 @@ from uploadService import UploadService
 from transcriptionService import TranscriptionService
 
 class Webinterface:
-    def __init__(self, serverName):
-        self.serverName = serverName
+    def __init__(self):
+        self.serverName = ""
         self.transcriptionStatus = ""
         self.webinterface = Flask(__name__)
-        self.bootstrap = Bootstrap5(self.webinterface) #here
-        self.webinterface.config["SERVER_NAME"] = self.serverName
+        self.bootstrap = Bootstrap5(self.webinterface)
         self.addEndpoints()
         DataManager.initailizeFilesystem()
 
@@ -33,6 +32,7 @@ class Webinterface:
 
     def uploadStartpage(self):
         DataManager.resetFileSystem()
+        self.serverName = request.url_root
         return render_template("upload_startpage.html")
 
     def uploadNoFileSelected(self):

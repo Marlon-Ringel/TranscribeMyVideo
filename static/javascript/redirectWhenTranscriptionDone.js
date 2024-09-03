@@ -11,9 +11,9 @@ async function redirectWhenTranscriptionDone() {
     }
 
     if(status.transcriptionStatus == "done") {
-        window.location.replace("http://"+status.serverName+"/correct_transcript")
+        window.location.replace(status.serverName+"correct_transcript")
     }
-    else if(window.location.href == "http://"+status.serverName+"/transcription_process"){
+    else if(window.location.href == status.serverName+"transcription_process"){
         retry = setTimeout(redirectWhenTranscriptionDone, 1000)
     }     
 }
