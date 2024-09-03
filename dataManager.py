@@ -89,4 +89,5 @@ class DataManager:
     def getPdfFilePath():
         if len(DataManager.videoFileName.replace('.mp4', '')) > 38:
             return f"{DataManager.filesystemPath}PDF/{DataManager.videoFileName.replace('.mp4', '')[0:38]}_transcription.pdf"
-        return f"{DataManager.filesystemPath}PDF/{DataManager.videoFileName.replace('.mp4', '')}_transcription.pdf"    
+        return f"{DataManager.filesystemPath}PDF/{DataManager.videoFileName.replace('.mp4', '')}_transcription.pdf"  
+      

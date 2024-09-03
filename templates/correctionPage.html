@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 
 {% block titletext %}
-    <h2>Transkript bearbeiten</h2> 
+    <h2 id="titleSub">Transkript bearbeiten</h2> 
 {% endblock %}
  
 {% block interactive %}  
     <form action="/corrected_transcript" method="post">
-		<div>
-			<label>Transkript für Video „{{ videoFileName }}“: </label>
-			<textarea name="transcript" spellcheck="true">{{ transcriptText }}</textarea>
+		<div class="mb-3">
+			<label class="formTitle">Transkript für Video „{{ videoFileName }}“: </label>
+			<textarea id="correctionTextArea" class="form-control" name="transcript" rows="{{ rows }}" spellcheck="true">{{ transcriptText }}</textarea>
 		</div>
-		<div>
-			<input type="submit" value="Bearbeitung abschließen"></input>
+		<div class="mb-3">
+			<input id="finishCorrectionBtn" class="btn" type="submit" value="Bearbeitung abschließen"></input>
 		</div>
     </form>    
 {% endblock %}
 
 {% block explenation %} 
     <div>
-        <p>
+        <p id="explanationText">
             Das Transkript für Video „{{ videoFileName }}“ wurde erstellt. Sie haben auf dieser Seite die Möglichkeit, Änderungen oder Korrekturen am Transkript vorzunehmen. 
             <br><br>
             Klicken Sie auf den „Bearbeitung abschließen“ Button, um die Bearbeitung fertigzustellen. 

@@ -1,0 +1,140 @@
+#body {
+    color: white;
+    background-color: #1b1b1b;  
+    overflow: auto;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    word-break: break-word;
+    
+    #titleText {
+        text-align: center;
+        min-height: 250px;
+        height: fit-content;
+        
+        #title {
+            padding: 95px 0 45px 0; 
+        }
+    }
+
+    #explanation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #explanation, #interactive {
+        background-color: #252525;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 20px;
+        min-height: 200px;
+        height: fit-content;
+        width: 55%; 
+
+        @media (max-width: 992px) {
+            width: 100%;
+        }
+
+        #explanationText {
+            text-align: left;
+            margin: 20px;
+            span {
+                color: rgb(150, 0, 0);  
+                font-weight: bold;     
+            }
+        }
+
+        #uploadErrorText {
+            margin-bottom: 44px;
+            span {
+                color: rgb(150, 0, 0); 
+                font-weight: bold;  
+            }
+        }
+
+        #downloadPageInteractiveSectionTitle {
+            font-weight: bold;
+            padding-top: 30px;
+            margin-bottom: 25px;
+        }
+
+        .formTitle {
+            padding: 45px 0 20px 0;
+        }
+
+        #selectFileBtn, #uploadFileBtn, .btn {
+            color: white;
+            background: #494949;
+            border-color: #2e2e2e;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 auto;
+            width: fit-content;
+            
+
+            &::file-selector-button {
+                color: white;
+                background: #494949;
+                border-color: #2e2e2e;
+            }
+        }
+
+        #selectFileBtn {
+            font-weight: normal;
+            max-width: 90%;
+            &::file-selector-button {
+                font-weight: bold;
+            }
+        }
+
+        #finishCorrectionBtn {
+            margin-bottom: 44px;
+        }
+        
+        #downloadBtnContainer {
+            margin-bottom: 25px;
+        }
+
+        #toStartPageBtnContainer {
+            padding-bottom: 35px;
+        }
+
+        #correctionTextArea {
+            background-color: rgb(230, 230, 230);
+            margin: 8px auto 34px auto; 
+            width: 95%;
+        }
+    }
+
+    #waitingIndicator {
+        padding: 35px 0 20px 0;
+    
+        .waitingIndicatorAnimation {
+            border: 16px solid #f3f3f3; 
+            border-top: 16px solid #3498db; 
+            border-radius: 50%;
+            margin: auto;
+            width: 100px;
+            height: 100px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 3s linear infinite;                 
+        }
+        
+        #waitingIndicatorText {
+            padding-top: 10px;
+            margin: auto; 
+        }
+    }
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

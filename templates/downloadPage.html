@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 
 {% block titletext %}
-    <h2>Transkript herunterladen.</h2> 
+    <h2 id="titleSub">Transkript herunterladen.</h2> 
 {% endblock %}
  
 {% block interactive %}  
     <div>
-        <p>Transkript wurde erfolgreich erstellt.</p>
-        <div> 
-            <a href="{{url_for('downloadPDF')}}">Transkript als PDF herunterladen</a>
+        <p id="downloadPageInteractiveSectionTitle">Transkript wurde erfolgreich erstellt.</p>
+        <div id="downloadBtnContainer"> 
+            <a class="btn" href="{{url_for('downloadPDF')}}">Transkript als PDF herunterladen</a>
         </div>
-        <div>
-            <a href="/">Zurück zur Startseite</a>
+        <div id="toStartPageBtnContainer">
+            <a class="btn" href="/">Zurück zur Startseite</a>
         </div>   
     </div>
 {% endblock %}
 
 {% block explenation %} 
     <div>
-        <p>
+        <p id="explanationText">
             Ihr Transkript des Videos „{{ videoFileName }}“ steht zum Herunterladen bereit. <br> 
             Klicken Sie auf den Button „Transkript als PDF herunterladen“, um das Transkript herunterzuladen. <br><br>
             Durch Klicken des Buttons „Zurück zur Startseite“ gelangen Sie wieder zur Startseite

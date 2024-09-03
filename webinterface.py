@@ -1,7 +1,7 @@
 import json
 import threading as th
 from flask import *
-
+from flask_bootstrap import Bootstrap5
 from dataManager import DataManager
 from uploadService import UploadService
 from transcriptionService import TranscriptionService
@@ -11,6 +11,7 @@ class Webinterface:
         self.serverName = serverName
         self.transcriptionStatus = ""
         self.webinterface = Flask(__name__)
+        self.bootstrap = Bootstrap5(self.webinterface) #here
         self.webinterface.config["SERVER_NAME"] = self.serverName
         self.addEndpoints()
         DataManager.initailizeFilesystem()

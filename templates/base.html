@@ -4,18 +4,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../static/css/style.css">
+        {{ bootstrap.load_css() }}
         <title>Video-Transkription</title>
     </head>
-    <body>
-        <div>
-            <h1>Video-Transkription</h1>
-            {% block titletext %} {% endblock %}
+    <body id="body">
+        <div id="titleText">
+            <div class="container">
+                <h1 id="title">Video-Transkription</h1>
+                {% block titletext %} {% endblock %}
+            </div>
         </div>
-        <div>
+        <div id="interactive", class="container">
             {% block interactive %} {% endblock %}
         </div>
-        <div>
+        <div id="explanation", class="container">
             {% block explenation %} {% endblock %}
         </div>    
+        {{ bootstrap.load_js() }}
     </body>
 </html>

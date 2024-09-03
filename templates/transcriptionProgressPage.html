@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 
 {% block titletext %}
-    <h2>Transkript für „{{ videoFileName }}“ wird erstellt.</h2> 
+    <h2 id="titleSub">Transkript für „{{ videoFileName }}“ wird erstellt.</h2> 
 {% endblock %}
  
 {% block interactive %}  
-    <div>
-        <div></div>
-        <p>Bitte warten ...</p>
+    <div id="waitingIndicator">
+        <div class="waitingIndicatorAnimation"></div>
+        <p id="waitingIndicatorText">Bitte warten ...</p>
     </div>   
     <script src="{{ url_for('static', filename='javascript/redirectWhenTranscriptionDone.js') }}"></script>
 {% endblock %}
 
 {% block explenation %} 
     <div>
-        <p>
+        <p id="explanationText">
             Ihr Transkript des Videos „{{ videoFileName }}“ wird erstellt. <br>
             Bitte warten Sie, bis der Prozess abgeschlossen ist. <br> 
             Sie werden auf die Seite zum bearbeiten des Transkriptes weitergeleitet, <br>

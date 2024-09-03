@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 
 {% block titletext %}
-    <h2>Video hochladen</h2>
+    <h2 id="titleSub">Video hochladen</h2>
 {% endblock %}
 
 {% block interactive %}
     <form action="/upload" method="post" enctype="multipart/form-data"> 
-        <div>
-            <label>Bitte ein MP4-Video hochladen, für das Sie ein Transkript erstellen möchten.</label>
-            <input type="file" name="file"/> 
+        <div class="mb-3">
+            <label class="formTitle">Bitte ein MP4-Video hochladen, für das Sie ein Transkript erstellen möchten.</label>
+            <input id="selectFileBtn" class="form-control" type="file" name="file"/> 
         </div>
-        <div>
-            <input type="submit" value="Hochladen">
+        <div class="mb-3 ">
+            <input id="uploadFileBtn" class="form-control" type="submit" value="Hochladen">
         </div>
-        <div>
-            <label></label>
+        <div class="mb-3 ">
+            <label id="uploadErrorText"></label>
         </div>
     </form>   
 {% endblock %}
 
 {% block explenation %} 
     <div>
-        <p>
+        <p id="explanationText">
             1. Klicken Sie auf „Durchsuchen“, um eine Video-Datei auszuwählen. <br> 
             2. Klicken Sie auf „Hochladen“, um die Generierung des Transkriptes zu starten. <br>
             3. Warten Sie, bis das Transkript erstellt ist.
