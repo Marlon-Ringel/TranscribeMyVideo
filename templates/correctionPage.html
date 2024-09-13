@@ -1,10 +1,13 @@
+<!-- Page where the client can correct the generated transcript.  -->
 {% extends 'base.html' %}
 
 {% block titletext %}
+<!-- Individual page title of this page. -->
     <h2 id="titleSub">Transkript bearbeiten</h2> 
 {% endblock %}
  
 {% block interactive %}  
+<!-- Form to correct the transcript and submit the correction. -->
     <form action="/corrected_transcript" method="post">
 		<div class="mb-3">
 			<label class="formTitle">Transkript für Video „{{ videoFileName }}“: </label>
@@ -17,6 +20,7 @@
 {% endblock %}
 
 {% block explenation %} 
+<!-- Explanatory text containing instructions on how to use this page.  -->
     <div>
         <p id="explanationText">
             Das Transkript für Video „{{ videoFileName }}“ wurde erstellt. Sie haben auf dieser Seite die Möglichkeit, Änderungen oder Korrekturen am Transkript vorzunehmen. 

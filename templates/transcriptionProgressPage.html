@@ -1,18 +1,23 @@
+<!-- Page for display of indicator that the transcription process is executed. -->
 {% extends 'base.html' %}
 
 {% block titletext %}
+<!-- Individual page title of this page. -->
     <h2 id="titleSub">Transkript für „{{ videoFileName }}“ wird erstellt.</h2> 
 {% endblock %}
  
 {% block interactive %}  
+    <!-- Indicator that the transcription process is executed. -->
     <div id="waitingIndicator">
         <div class="waitingIndicatorAnimation"></div>
         <p id="waitingIndicatorText">Bitte warten ...</p>
     </div>   
+    <!-- JavaScript, which detects if transcription process is complete and forwards client to correction page. -->
     <script src="{{ url_for('static', filename='javascript/redirectWhenTranscriptionDone.js') }}"></script>
 {% endblock %}
 
 {% block explenation %} 
+<!-- Explanatory text informing the client that the transcript is being generated and that the client has to wait.  -->
     <div>
         <p id="explanationText">
             Ihr Transkript des Videos „{{ videoFileName }}“ wird erstellt. <br>

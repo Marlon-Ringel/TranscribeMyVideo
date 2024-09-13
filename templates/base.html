@@ -1,25 +1,32 @@
+<!-- Base template for all pages of the application. -->
 <!DOCTYPE html>
 <html lang="de">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Import CSS. -->
         <link rel="stylesheet" href="../static/css/style.css">
+        <!-- Import bootstrap CSS. -->
         {{ bootstrap.load_css() }}
         <title>Video-Transkription</title>
     </head>
     <body id="body">
+        <!-- Title text section. -->
         <div id="titleText">
             <div class="container">
                 <h1 id="title">Video-Transkription</h1>
                 {% block titletext %} {% endblock %}
             </div>
         </div>
+        <!-- Interactive section. -->
         <div id="interactive", class="container">
             {% block interactive %} {% endblock %}
         </div>
+        <!-- Explenation section. -->
         <div id="explanation", class="container">
             {% block explenation %} {% endblock %}
         </div>    
+        <!-- Import bootstrap JavaScript. -->
         {{ bootstrap.load_js() }}
     </body>
 </html>

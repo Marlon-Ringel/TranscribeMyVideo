@@ -1,5 +1,11 @@
+// Global variable to trigger the timeout function. 
 var retry
 
+/*
+Fetches the transcription status and uses it to determine if the transcription process is finished. 
+If the transcription process is not finished: Sets a delay of 1000 ms and start itself again after. 
+If the transcription process is finished: Redirects the client to the correction page. 
+*/
 async function redirectWhenTranscriptionDone() {
     let status;
   
@@ -18,4 +24,5 @@ async function redirectWhenTranscriptionDone() {
     }     
 }
 
+// Initial invocation of the redirectWhenTranscriptionDone function. 
 redirectWhenTranscriptionDone()

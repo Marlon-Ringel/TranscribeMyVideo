@@ -1,10 +1,13 @@
+<!-- Error page displayed if uploaded file had wrong file format in previous attempt. -->
 {% extends 'base.html' %}
 
 {% block titletext %}
+<!-- Individual page title of this page. -->
     <h2 id="titleSub">Video hochladen</h2> 
 {% endblock %}
 
 {% block interactive %}
+<!-- Form to select and upload a file. Displaying error message that the uploaded file had the wrong file format in the previous attempt. -->
     <form action="/upload" method="post" enctype="multipart/form-data"> 
         <div class="mb-3">
             <label class="formTitle">Bitte ein MP4-Video hochladen, für das Sie ein Transkript erstellen möchten.</label>
@@ -22,6 +25,7 @@
 {% endblock %}
 
 {% block explenation %} 
+<!-- Explanatory text containing instructions on how to use this page.  -->
     <div>
         <p id="explanationText">
             1. Klicken Sie auf „Durchsuchen“, um eine Video-Datei auszuwählen. <br> 

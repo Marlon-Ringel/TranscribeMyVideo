@@ -1,10 +1,13 @@
+<!-- Page where the client can download the generated transcript as a PDF Document. -->
 {% extends 'base.html' %}
 
 {% block titletext %}
+<!-- Individual page title of this page. -->
     <h2 id="titleSub">Transkript herunterladen.</h2> 
 {% endblock %}
  
-{% block interactive %}  
+{% block interactive %} 
+<!-- Form to download transcript as PDF Document and / or return to startpage. -->
     <div>
         <p id="downloadPageInteractiveSectionTitle">Transkript wurde erfolgreich erstellt.</p>
         <div id="downloadBtnContainer"> 
@@ -17,6 +20,7 @@
 {% endblock %}
 
 {% block explenation %} 
+<!-- Explanatory text containing instructions on how to use this page.  -->
     <div>
         <p id="explanationText">
             Ihr Transkript des Videos „{{ videoFileName }}“ steht zum Herunterladen bereit. <br> 
