@@ -1,7 +1,7 @@
 #TranscribeMyVideo
 TranscribeMyVideo ist eine Webanwendung zur Unterstützung der Transkription von Videodateien. TranscribeMyVideo erlaubt es Nutzern, eine Videodatei hochzuladen, für die automatisch ein Transkript erstellt wird. Anschließend hat der Nutzer die Möglichkeit, dieses zu korrigieren und es als PDF-Datei herunterzuladen.
 
-Voraussetzungen: 
+##Voraussetzungen
 Um TranscribeMyVideo lokal ausführen zu können, müssen folgende Voraussetzungen erfüllt sein:
 
 Linux basiertes Betriebssystem (Getestet unter Ubuntu 22.04.5 LTS) https://wiki.ubuntu.com/Releases
@@ -31,6 +31,7 @@ pip install -U openai-whisper
 PyFPDF: https://pyfpdf.readthedocs.io/en/latest/
 pip install fpdf
 
+##Ausführen der Anwendung
 Sind diese Voraussetzungen erfüllt, kann TranscribeMyVideo wie folgt ausgeführt werden:
 
 “python3 <Pfad zum Anwendungsverzeichnis>main.py”
