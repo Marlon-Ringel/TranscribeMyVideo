@@ -45,9 +45,13 @@ pip install -U openai-whisper
 pip install fpdf
 ```
 ## Ausführen der Anwendung
-Sind diese Voraussetzungen erfüllt, kann TranscribeMyVideo wie folgt über das Terminal ausgeführt werden:
+Sind alle Voraussetzungen erfüllt, kann TranscribeMyVideo wie folgt über das Terminal ausgeführt werden:
 ```bash
 “python3 <Pfad zum Anwendungsverzeichnis>main.py”
 ```
-Anschließend ist TranscribeMyVideo über einen beliebigen Webbrowser unter „http://127.0.0.1:5000/“ verfügbar. 
+Anschließend ist TranscribeMyVideo über einen beliebigen Webbrowser unter „127.0.0.1:5000/“ verfügbar. 
 Genaue Anweisungen zur Bedienung der Anwendung werden dem Nutzer während der Ausführung der Anwendung bereitgestellt.
+
+## Anpassen des verwendeten KI-Modells 
+TranscribeMyVideo verwendet das Sprache-zu-Text-System, Whisper für die Transkription der Videodatei. 
+Dabei wird aus Performancegründen das Whisper „base“ Modell verwendet. Dies kann in der Datei „transcriptionService.py“ angepasst werden. 
