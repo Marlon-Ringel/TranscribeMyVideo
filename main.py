@@ -5,7 +5,7 @@ def main():
     app = Webinterface()
     app.run(debug=True)
 
-# Executes the main function. 
+# Execute the main function. 
 if __name__ == "__main__":
     main()
     

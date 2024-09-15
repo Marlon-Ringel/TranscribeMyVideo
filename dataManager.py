@@ -14,7 +14,7 @@ class DataManager:
     # The name of the currently processed video file.
     videoFileName = ""
 
-    # Checks if the directory structure that the system needs to store data is present and creates it if not. 
+    # Check if the directory structure that the system needs to store data is present and create it if not. 
     @staticmethod 
     def initailizeFilesystem():
         if not os.path.exists(DataManager.filesystemPath):
@@ -24,7 +24,7 @@ class DataManager:
             os.mkdir(f"{DataManager.filesystemPath}text")
             os.mkdir(f"{DataManager.filesystemPath}video")
 
-    # Removes all data that the System stored in the filesystem. Also resets the "videoFileName" attribute to an empty string. 
+    # Remove all data that the System stored in the filesystem. Also reset the "videoFileName" class attribute to an empty string. 
     @staticmethod 
     def resetFileSystem():
         DataManager.videoFileName = ""
@@ -35,7 +35,7 @@ class DataManager:
         os.mkdir(f"{DataManager.filesystemPath}text")
         os.mkdir(f"{DataManager.filesystemPath}video")
     
-    # Takes a file as an "FileStorage"-Object and stores it in the video file's directory.
+    # Take a file as an "FileStorage"-Object and store it in the video file's directory.
     # 
     # Input: 
     # file: FileStorage-Object.  
@@ -44,21 +44,21 @@ class DataManager:
         DataManager.videoFileName = file.filename 
         file.save(DataManager.getVideoFilePath())
 
-    # Deletes the current file from the video file's directory. Sets the "videoFileName" attribute to an empty string.
+    # Delete the current file from the video file's directory. Set the "videoFileName" attribute to an empty string.
     @staticmethod
     def removeUploadedFile():
         os.remove(DataManager.getVideoFilePath())
         DataManager.videoFileName = ""
 
-    # Takes a video file as an "VideoFileClip"-Object and stores the audio data from this video file in the audio file's directory.
+    # Take a video file as an "VideoFileClip"-Object and store the audio data from this video file in the audio file's directory.
     #
     # Input: 
-    # video: VideoFileClip-Object.
+    # video: VideoFileClip-Object containing a video file.
     @staticmethod    
     def saveAudio(video : VideoFileClip):
         video.audio.write_audiofile(DataManager.getAudioFilePath())
 
-    # Saves a Transcript and its corresponding row count as a text file in the text file directory.
+    # Save a transcript and its corresponding row count as a text file in the text file directory.
     #
     # Input: 
     # rowCount: The row count of the transcript as an integer. 
@@ -69,7 +69,7 @@ class DataManager:
             transcriptFile.write(f"{rowCount}\n")
             transcriptFile.write(transcript)
 
-    # Loads a transcript and its row count from the text file directory and returns this data. 
+    # Load a transcript and its row count from the text file directory and return this data. 
     #
     # Return:
     # rowCount: The row count of the transcript as an integer. 
@@ -83,7 +83,7 @@ class DataManager:
             transcript = transcriptFile.read()
         return rowCount, transcript
 
-    # Takes a transcript as a string, formats it as a PDF file and stores it in the PDF file's directory.
+    # Take a transcript as a string, format it as a PDF file and store it in the PDF file's directory.
     #
     # Input:  
     # transcript: The transcript as a string. 
@@ -104,34 +104,34 @@ class DataManager:
         pdf.multi_cell(w = 0, h = 5, txt = transcript)
         pdf.output(DataManager.getPdfFilePath())
 
-    # Returns the path of the video file's directory.
+    # Return the path of the currently processed video file.
     # 
     # Return:
-    # A string containing the path of the video file's directory.
+    # String containing the path to the currently processed video file.
     @staticmethod
     def getVideoFilePath():
         return f"{DataManager.filesystemPath}video/{DataManager.videoFileName}"
     
-    # Returns a string containing the name of the currently processed video file.
+    # Return a string containing the name of the currently processed video file.
     # 
     # Return:
-    # A string containing the name of the currently processed video file. 
+    # String containing the name of the currently processed video file. 
     @staticmethod
     def getVideoFileName():
         return DataManager.videoFileName
     
-    # Returns the path of the audio file's directory.
+    # Return the path of the audio file containing the audio of the currently processed video.
     # 
     # Return:
-    # A string containing the path of the audio file's directory.
+    # String containing the path to the audio file containing the audio of the currently processed video.
     @staticmethod 
     def getAudioFilePath():
         return f"{DataManager.filesystemPath}audio/audio.mp3"
     
-    # Returns the path of the PDF file's directory.
+    # Return the path of the PDF file's directory.
     # 
     # Return:
-    # A string containing the path of the PDF file's directory.
+    # String containing the path of the PDF file's directory.
     @staticmethod
     def getPdfFilePath():
         if len(DataManager.videoFileName.replace('.mp4', '')) > 38:

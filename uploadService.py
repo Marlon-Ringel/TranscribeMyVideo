@@ -4,9 +4,9 @@ from dataManager import DataManager
 # Class that implements functionality to check if a file was uploaded and has the correct file format. 
 class UploadService: 
     
-    # Initialization of the UploadService Object. Takes an HTTP request packet, 
-    # checks if it was transmitted using the HTTP method post and extracts the FileStorage
-    # Object and the filename string from it, and stores them in the Object's attributes.
+    # Initialization of the UploadService Object. Take an HTTP request packet, check if it was transmitted 
+    # using the HTTP method post. Extract the FileStorage Object and the filename string from the HTTP request 
+    # packet and stores them in the class attributes.
     #
     # Class attributes: 
     # uploadedFile: Stores the uploaded file as a FileStorage Object. 
@@ -20,7 +20,7 @@ class UploadService:
             self.uploadedFile = request.files['file']
             self.uploadedFileName = self.uploadedFile.filename
 
-    # Uses the class attribute "uploadedFileName" to determine if a file was uploaded. 
+    # Use the class attribute "uploadedFileName" to determine if a file was uploaded. 
     #
     # Return:
     # Boolean indicating if a file was uploaded or not. 
@@ -29,9 +29,9 @@ class UploadService:
             return True
         return False
     
-    # Saves the uploaded file to the file system. Checks if the file has the correct file format (MP4). 
-    # If the file has the wrong file format: Deletes the file and returns false. 
-    # If the file has the correct format: Returns true.     
+    # Save the uploaded file to the file system. Check if the file has the correct file format (MP4). 
+    # If the file has the wrong file format: Delete the file and returns false. 
+    # If the file has the correct format: Return true.     
     #
     # Return: 
     # Boolean indicating if the file has the correct file format.

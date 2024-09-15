@@ -2,9 +2,9 @@
 var retry
 
 /*
-Fetches the transcription status and uses it to determine if the transcription process is finished. 
-If the transcription process is not finished: Sets a delay of 1000 ms and start itself again after. 
-If the transcription process is finished: Redirects the client to the correction page. 
+Fetche the transcription status and use it to determine if the transcription process is finished. 
+If the transcription process is not finished: Set a delay of 1000 ms and start redirectWhenTranscriptionDone function again after. 
+If the transcription process is finished: Redirect the client to the correction page. 
 */
 async function redirectWhenTranscriptionDone() {
     let status;
