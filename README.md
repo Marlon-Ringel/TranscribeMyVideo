@@ -55,3 +55,6 @@ Genaue Anweisungen zur Bedienung der Anwendung werden dem Nutzer während der Au
 ## Anpassen des verwendeten KI-Modells
 TranscribeMyVideo verwendet das Sprache-zu-Text-System Whisper für die Transkription der Videodatei.
 Dabei wird aus Performancegründen das Whisper „base“ Modell verwendet. Dies kann in der Datei „transcriptionService.py“ angepasst werden.
+
+## Dokumentation
+Eine ausführliche Dokumentation des vorliegenden Prototyps finden Sie in Kapitel 7-8 meiner Bachelorarbeit.
